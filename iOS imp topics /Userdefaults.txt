@@ -1,0 +1,94 @@
+Q- What is UserDefaults 
+
+A) 1- User defaults is a class for storing small amount of data persistently with in iOS app
+
+   2- In user defaults you can allow users to specify their preferred units of measurement or media playback speed 
+
+   3- As the name suggest they’re commonly used to determine an app’s default state at startup or the way it acts by default
+
+   4- At run time you use user defaults object to read the defaults which your app stored.User defaults uses the cashes to avoid going again and again to the preferences set by the user 
+
+   5- When you set a default value, it’s changed synchronously within your process, and asynchronously to persistent storage and other processes
+
+   6- It stores the data in Plist (Property lists can represent data types like strings, numbers, dates, arrays, and dictionaries. UserDefaults leverages this format to store its key-value pairs persistently on the device. Behind the scenes, when you save data using UserDefaults, it gets serialized into a property list format and stored in a file on the device's file system)
+
+
+Q2- Internal functionality of User defaults 
+
+A) Internally, UserDefaults in iOS works by storing data in a property list format, typically in a file called UserDefaults.plist. When you set a value using UserDefaults, it gets serialized into this property list format and saved to disk. Similarly, when you retrieve a value, UserDefaults reads the property list file from disk and deserializes the data back into the appropriate Swift types.
+
+
+Q3- How do you read and write data in user defaults 
+
+A) To write user defaults you set(_:forKey:) method you have to provide the unique key to that you will use to retrieve later 
+
+// Example: Storing a string value
+
+UserDefaults.standard.set("John", forKey: "username")
+
+
+Reading data from user defaults 
+- To read data from UserDefaults, you use the object(forKey:) method to retrieve the value associated with a specific key
+
+// Example: Retrieving a string value
+if let username = UserDefaults.standard.string(forKey: "username") {
+    print("Username: \(username)")
+}
+
+
+
+// Writing data to UserDefaults
+UserDefaults.standard.set("John", forKey: "username")
+
+// Reading data from UserDefaults
+if let username = UserDefaults.standard.string(forKey: "username") {
+    print("Username: \(username)")
+}
+
+Q4- when it is not appropriate to use user defaults and what are the limitations of user defaults in term of size 
+
+A) Some limitations 
+  
+   1- Size limit : UserDefaults is not designed for storing large amounts of data
+
+   2- Sensitive Information: UserDefaults stores data in plain text format, which means it's not secure for storing sensitive information such as passwords, authentication tokens, or other confidential data
+
+   3- Frequent Data Updates: UserDefaults is not optimized for frequent read and write operations, especially in scenarios where data is updated frequently.
+
+
+In terms of limitations, UserDefaults has a maximum size limit for the data it can store, which is around a few megabytes.
+
+
+Q5- Explain what is persistence in context of user defaults and how does it ensures data persistence across different devices
+ 
+A) In the context of UserDefaults, persistence refers to the ability to store data in a way that it remains accessible even after the app is closed or the device is restarted. UserDefaults achieves data persistence by writing the data to disk, allowing it to be retrieved and used later, even across different app launches or device reboots.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
