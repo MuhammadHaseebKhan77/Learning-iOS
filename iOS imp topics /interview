@@ -1,0 +1,686 @@
+Q1_ what is stored and computed properties in swift 
+
+A) Stored property :
+                     A stored property stores a value for later use (for example, a variable that belongs to a class instance). They are declared as variables using the var keyword.
+
+Example of stored property 
+
+class Person {
+    var name: String   // Stored property
+    var age: Int      // Stored property
+    
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age
+    }
+}
+
+
+
+Computed property :
+
+                     A computed property does not store a value. Instead, it computes it only when requested.
+
+
+struct Circle {
+    var radius: Double // Stored property
+    
+    var area: Double { // Computed property
+        return Double.pi * radius * radius
+    }
+}
+
+
+
+Summary:
+Stored Properties: Store and hold values directly within an instance of a class or structure. Their values are set and retrieved directly.
+Computed Properties: Do not store a value directly but provide a way to compute a value dynamically based on other properties or data. They use getters and setters to calculate and return a value each time it's accessed.
+
+In summary, stored properties store values directly, while computed properties provide a way to compute values dynamically based on other data. Depending on your requirements, you can choose between stored and computed properties to model the data in your Swift classes and structures effectively.
+
+
+
+Q2- What is getter and setter property and when to use them 
+
+A) setter:
+          
+          1-) "setter," is a property that allows you to modify or set the value of a variable or property.
+
+2-). It provides write-only access to the property's value, meaning you can modify the value but cannot directly retrieve it.
+
+3-) Setters are commonly used when you want to control how the internal state of an object is modified, allowing validation or additional logic to be performed during assignment.
+
+
+Getter Property :
+
+                1-) Getter is a property that allows you to retrieve the value of a variable or property.
+
+2-) It provides read-only access to the property's value, meaning you can retrieve the value but cannot modify it.
+
+3-) Getters are typically used when you want to expose the current state of an object without allowing external code to modify it directly.
+
+
+Example of getter and setter 
+
+class Temperature {
+    private var _value: Double = 0.0
+    
+    // Getter property
+    var value: Double {
+        return _value
+    }
+    
+    // Setter property
+    var newValue: Double {
+        set {
+            _value = newValue
+        }
+    }
+}
+
+
+The value property provides read-only access to the temperature value, allowing external code to retrieve the current temperature without modifying it.
+The newValue property provides write-only access to set a new temperature value, allowing external code to modify the temperature value but not retrieve it directly.
+
+Overall, getter and setter properties provide controlled access to the state of an object, enabling encapsulation and abstraction while maintaining data integrity.
+
+
+
+Q4) when we use getter and setter property ?
+
+A) Getter Property: 
+                    Use a getter when you want to retrieve the value of a property but don't want it to be directly modifiable from outside the object. It provides read-only access to the property's value.
+
+class Temperature {
+    private var _value: Double = 0.0
+    
+    var value: Double { // Getter property
+        return _value
+    }
+}
+
+
+
+Setter Property:
+                  Use a setter when you want to allow modification of the property's value but want to control how it's set. It provides write-only access to the property's value.
+
+
+class Temperature {
+    private var _value: Double = 0.0
+    
+    var newValue: Double { // Setter property
+        set {
+            _value = newValue
+        }
+    }
+}
+
+
+Q6) Difference between let and var ?
+
+A) The main difference between var and let is mutability:
+
+ 1) var is used for mutable variables (can change).
+ 2) let is used for immutable constants (cannot change).
+
+         
+
+Q7) How to concat two string values?
+
+A) In Swift, you can concatenate two string values using the + operator or by using the += compound assignment operator.
+
+1- Using + operator 
+
+let firstName = "John"
+let lastName = "Doe"
+let fullName = firstName + " " + lastName
+print(fullName) // Output: "John Doe"
+
+
+In this example, the + operator is used to concatenate the firstName, a space " ", and the lastName strings to form the fullName
+
+2- Using the += Compound Assignment Operator:
+
+
+var greeting = "Hello, "
+let name = "John"
+greeting += name
+print(greeting) // Output: "Hello, John"
+
+
+In this example, the += compound assignment operator is used to concatenate the name string to the greeting.
+
+
+Q8) Difference between nil and empty?
+
+A) Nil represents the absence of a value, while empty typically refers to a collection (e.g., an array, string, or dictionary) that contains no elements.
+                                                          Nil represents the absence of a value in Swift. It is used to indicate that a variable or constant does not currently have a value assigned to it.
+
+
+Q9) Concept of ! In Swift?
+
+A)  In Swift, the exclamation mark (!) is used for forced unwrapping of optionals. It's used to access the underlying value of an optional when it's guaranteed to have a value.
+
+Q10) Concept of ? In Swift?
+
+A) In Swift, the question mark (?) is used to declare an optional type. It indicates that a variable or constant might have a value or might be nil.
+
+
+Q11) Concept of ?? In Swift?
+
+A) In Swift, the double question mark (??) is called the nil-coalescing operator. It's used to provide a default value when unwrapping an optional fails (i.e., when the optional is nil).
+
+
+Q12) How to write multi-line string?
+
+A)  Multi-line strings in Swift are created using triple quotation marks ("""). They allow you to write strings that span multiple lines without the need for escape characters.
+
+
+Q13) How to find a character in a string?
+
+A) There are many ways to find character in a string 
+
+1- CONTAIN (keyword)
+
+The contains(_:) method checks whether a string contains a specific character. It returns a boolean value indicating whether the character is found or not.
+
+let myString = "Hello, Swift!"
+let character: Character = "o"
+
+if myString.contains(character) {
+    print("Character '\(character)' found in the string.")
+} else {
+    print("Character '\(character)' not found in the string.")
+}
+
+
+Q14) Concept of Logical Operators like &&, || in Swift?
+
+A) 1- Logical AND (&&):
+
+
+1- The && operator returns true if both operands are true, otherwise it returns false.
+
+2- It short-circuits: if the left operand evaluates to false, the right operand is not evaluated because the result will be false regardless.
+
+let isRainy = true
+let isWindy = false
+
+if isRainy && isWindy {
+    print("It's rainy and windy.")
+} else {
+    print("It's not rainy and windy.")
+}
+// Output: It's not rainy and windy.
+
+
+2- Logical OR (||):
+
+1- The || operator returns true if at least one of the operands is true, otherwise it returns false.
+
+2- It also short-circuits: if the left operand evaluates to true, the right operand is not evaluated because the result will be true regardless.
+
+
+let isSunny = true
+let isWarm = false
+
+if isSunny || isWarm {
+    print("It's either sunny or warm.")
+} else {
+    print("It's not sunny or warm.")
+}
+// Output: It's either sunny or warm.
+
+
+Q15) Define array and explain all the operations related to array ?
+
+A) an array is a collection type that stores multiple values of the same type in an ordered list. Arrays are commonly used for storing and managing collections of data elements.
+
+
+// Declaring an empty array of integers
+var numbers: [Int] = []
+
+// Declaring an array of strings with initial values
+var fruits: [String] = ["Apple", "Banana", "Orange"]
+
+// Declaring an array of characters
+var vowels: [Character] = ["a", "e", "i", "o", "u"]
+
+
+1- Extracting Same Values from Two Arrays:
+
+
+let array1 = [1, 2, 3, 4, 5]
+let array2 = [3, 4, 5, 6, 7]
+
+let commonValues = array1.filter { array2.contains($0) }
+print(commonValues) // Output: [3, 4, 5]
+
+2- Inserting a New Element in an Array:
+
+
+var numbers = [1, 2, 3, 4, 5]
+numbers.append(6) // Adds 6 to the end of the array
+numbers.insert(0, at: 0) // Inserts 0 at index 0
+print(numbers) // Output: [0, 1, 2, 3, 4, 5, 6]
+
+
+3- Removing an Element from an Array:
+
+var numbers = [1, 2, 3, 4, 5]
+numbers.remove(at: 2) // Removes element at index 2 (value 3)
+print(numbers) // Output: [1, 2, 4, 5]
+
+
+4- Removing All Elements from an Array: 
+
+var numbers = [1, 2, 3, 4, 5]
+numbers.removeAll() // Removes all elements from the array
+print(numbers) // Output: []
+
+
+5- Removing the First Element from an Array:
+
+var numbers = [1, 2, 3, 4, 5]
+let removedElement = numbers.removeFirst() // Removes and returns the first element (value 1)
+print(removedElement) // Output: 1
+print(numbers) // Output: [2, 3, 4, 5]
+
+
+6- Removing the Last Element from an Array:
+
+var numbers = [1, 2, 3, 4, 5]
+let removedElement = numbers.removeLast() // Removes and returns the last element (value 5)
+print(removedElement) // Output: 5
+print(numbers) // Output: [1, 2, 3, 4]
+
+
+Q17) Creating Sets in Swift?
+
+A) In Swift, a set is a collection type that stores unique values in no particular order. Sets are commonly used when you need to work with a collection of distinct elements
+
+Syntax :
+           var setName: Set<ElementType> = []
+
+Examples 
+
+// Declaring an empty set of integers
+var uniqueNumbers: Set<Int> = []
+
+// Declaring a set of strings with initial values
+var colors: Set<String> = ["Red", "Green", "Blue"]
+
+// Declaring a set of characters
+var vowels: Set<Character> = ["a", "e", "i", "o", "u"]
+
+
+Q18) difference between set and array?
+
+A) Sets and arrays are both collection types in Swift, but they have several differences in terms of their characteristics and usage:
+
+
+1- Ordering:
+ Array: Elements in an array are ordered and maintain the order in which they are inserted. You can access elements by their index.
+
+ Set: Elements in a set are unordered. There is no defined order, and you cannot access elements by index.
+
+2- Duplicate Elements:
+ Array: Arrays can contain duplicate elements. Each element is indexed, and duplicates are allowed.
+
+ Set: Sets contain unique elements only. Duplicate elements are automatically removed when adding  them to a set.
+
+3- Performance:
+ Array: Arrays are efficient for accessing elements by index (O(1)), but less efficient for checking membership or removing elements (O(n) for linear search).
+
+ Set: Sets are optimized for checking membership (O(1) average time complexity) and removing duplicates (O(n) worst-case time complexity for adding elements), making them ideal for scenarios where uniqueness is important.
+
+
+Q19) What Are Dictionaries in Swift?
+
+A) dictionary is a collection type that stores key-value pairs. Each value in a dictionary is associated with a unique key, allowing you to store and retrieve values based on their keys. 
+
+Syntax :
+
+          var dictionaryName: [KeyType: ValueType] = [:]
+
+
+Example :
+          // Declaring an empty dictionary with String keys and Int values
+var person: [String: Int] = [:]
+
+// Declaring a dictionary with initial values
+var scores: [String: Int] = ["John": 90, "Alice": 85, "Bob": 88]
+
+
+1- Creating Dictionaries in Swift:
+
+
+var person: [String: Any] = ["name": "John", "age": 30, "city": "New York"]
+print(person) // Output: ["age": 30, "city": "New York", "name": "John"] (Order may vary)
+
+
+
+2- Finding a Value from a Dictionary:
+ 
+let person: [String: Any] = ["name": "John", "age": 30, "city": "New York"]
+if let age = person["age"] as? Int {
+    print("Age: \(age)") // Output: Age: 30
+}
+
+
+// Given a dictionary of scores
+var scores: [String: Int] = ["John": 90, "Alice": 85, "Bob": 88]
+
+// Finding a value for a specific key
+if let johnScore = scores["John"] {
+    print("John's score: \(johnScore)") // Output: John's score: 90
+} else {
+    print("John's score not found")
+}
+
+
+In this example:
+
+We have a dictionary scores containing the scores of students.
+
+We use the key "John" to access the value associated with it from the dictionary using subscript notation ([]).
+
+If the key exists in the dictionary, we print the corresponding score. Otherwise, we handle the case where the key is not found.
+
+
+Q20) Difference between if else and switch statement?
+
+A) if-else statements evaluate conditions one by one until a true condition is found, while switch statements match a value against multiple cases and execute the code associated with the first matching case.
+
+Q21) How to write while loop?
+
+A) A while loop in Swift repeats a block of code until a specified condition becomes false. Here's an example:
+
+var i = 0
+while i < 5 {
+    print(i)
+    i += 1
+}
+
+Q22) What is repeat while loop? And Difference between repeat while loop and while loop?
+
+A)  A "repeat-while" loop is a control flow statement used in programming languages to execute a block of code repeatedly until a certain condition becomes false. It's similar to the "do-while" loop found in some other languages.
+
+Here's how a repeat-while loop typically works:
+
+The code block is executed once.
+
+After the code block is executed, the condition is evaluated.
+
+If the condition is true, the code block is executed again.
+
+This process repeats until the condition becomes false.
+
+The key difference between a repeat-while loop and a while loop lies in when the condition is checked:
+
+1- In a "repeat-while" loop, the condition is checked after the code block has been executed, meaning the block of code will always run at least once.
+
+2- In a "while" loop, the condition is checked before the code block is executed, so the block of code may not execute at all if the condition is initially false.
+
+var number = 1
+repeat {
+    print(number)
+    number += 1
+} while number <= 5
+
+This will print 
+
+1
+2
+3
+4
+5
+
+
+If you were to use a while loop for the same task, it would look like this:
+
+var number = 1
+while number <= 5 {
+    print(number)
+    number += 1
+}
+
+Both loops achieve the same result, but the repeat-while loop guarantees that the code block will execute at least once.
+
+
+Q23) Difference between guard and if let in Swift?
+
+A) Both guard and if let statements are used for optional binding, but they have different purposes. if let unwraps an optional value and executes code if the value is not nil, while guard exits a function or method if the condition is not met, ensuring that the value remains valid for subsequent code execution.
+
+Q24) What is tuples in Swift?
+
+A) A tuple is a grouping of multiple values into a single compound value. Tuples are useful for temporarily grouping related values together. They can contain values of any type and are defined using parentheses.
+
+
+Q25) How to use switch statement with if else?
+
+A) You can use a combination of switch statement and if-else statements to handle more complex conditional logic
+
+
+// Example: Determine the type of a given value
+
+let value: Any = 42 // Example value
+
+// Using a switch statement to determine the type of the value
+switch value {
+case is Int:
+    print("The value is an integer.")
+case is String:
+    print("The value is a string.")
+case is Double:
+    print("The value is a double.")
+default:
+    // If the type is not one of the specified cases, we can use if-else statements for further checking
+    if value is Bool {
+        print("The value is a boolean.")
+    } else {
+        print("The value is of unknown type.")
+    }
+}
+
+
+In  this example:
+
+We use a switch statement to check the type of the given value.
+
+For known types like Int, String, and Double, we handle them directly within the switch statement.
+For unknown types, we use an if-else statement within the default case of the switch statement to perform additional checks.
+
+This demonstrates how you can combine switch and if-else statements to handle different cases and conditions within your code.
+
+ 
+Q26) What is foundation and why we are using it? And Did our UIKit also implement foundation framework?
+
+A) Foundation is a framework provided by Apple for developing applications on macOS, iOS, watchOS, and tvOS. It contains a collection of classes, protocols, and functions that provide essential functionality for building applications, such as data storage, networking, file management, date and time handling, and more. We use the Foundation framework because it provides fundamental building blocks for developing robust and feature-rich applications across Apple's platforms. It simplifies common tasks and promotes consistency in development.
+                                                      Yes, UIKit, which is a framework primarily used for building user interfaces in iOS applications, is built on top of the Foundation framework. UIKit incorporates many classes and functionalities from Foundation to provide additional features specifically tailored for developing graphical user interfaces on iOS devices.
+
+
+Q27) How to write parametrize function? , How to write return type function? , How to write nested type function? , How to write multiple return type functions?
+
+A) 1- parametrize function:
+                            A "parametrize" function typically refers to a function that accepts parameters.
+
+
+func parametrizeFunction(parameter1: Int, parameter2: String) {
+    print("Parameter 1: \(parameter1), Parameter 2: \(parameter2)")
+}
+
+
+2- Return type function:
+
+In Swift, you specify the return type of a function using the "->" arrow followed by the return type
+
+func returnTypeFunction() -> Int {
+    return 42
+}
+
+
+3- nested type function :
+                          You can define a function inside another function in Swift. Here's an example of a nested function:
+
+func outerFunction() {
+    func nestedFunction() {
+        print("This is a nested function")
+    }
+    nestedFunction()
+}
+outerFunction() // Call the outer function to execute the nested function
+
+
+4-  Multiple return type functions
+
+In Swift, you can use tuples to return multiple values from a function.
+
+func multipleReturnFunction() -> (Int, String) {
+    let number = 42
+    let text = "Hello"
+    return (number, text)
+}
+
+let result = multipleReturnFunction()
+print("Number: \(result.0), Text: \(result.1)")
+
+
+Q28) For loop in swift ?
+
+A) for item in sequence {
+
+    // Here we're saying: "Hey, let's start looking at each thing (item) in the box (sequence)."
+    // And for each thing (item) we find in the box (sequence), we'll do the actions inside these curly braces {}.
+
+}
+
+for: It's like saying, "Hey, we're starting a loop here!"
+
+item: This is just a name we give to each thing (or item) we're going to look at in the sequence. 
+
+Imagine you have a bunch of toys (numbers, words, etc.) in a box (sequence), and you want to take them out one by one. You'd give each toy a name, like "toy1", "toy2", etc. Here, "item" is like that name.
+
+in: This is like saying, "Okay, now let's look inside this box (sequence) and see what we've got."
+sequence: This is the box of toys we mentioned earlier. It's where all the things we want to look at are kept. This box could be an array (a list of items), a range (like counting from 1 to 10), or even something else.
+
+{}: These curly braces are like a container for the actions we want to do with each item from the box (sequence). Inside these braces, we write what we want to do with each toy (item) we take out from the box (sequence).
+
+Examples :
+
+let numbers = [1, 2, 3, 4, 5]
+for number in numbers {
+    print(number)
+}
+
+
+In each iteration of the loop, the variable number takes on the value of each element in the numbers array, and the code block within the loop (in this case, print(number)) is executed.
+
+The for-in loop automatically handles iterating over the entire sequence until all elements have been processed. You don't need to manage an index or worry about out-of-bounds errors, making it a safer and more convenient option compared to traditional C-style for loops
+
+Example 2:
+
+let fruits = ["apple", "banana", "orange"]
+for (index, fruit) in fruits.enumerated() {
+    print("Index: \(index), Fruit: \(fruit)")
+}
+
+
+In this example, enumerated() returns a sequence of pairs (tuples) containing the index and value of each element in the fruits array. The for-in loop then iterates over this sequence, allowing you to access both the index and value of each element within the loop body.
+
+
+Q29) How to write an enumerated for loop?
+
+A) To write an enumerated for loop in Swift, you use the enumerated() method on a sequence to loop through its elements while also accessing their indices. Here's the syntax:
+
+for (index, element) in sequence.enumerated() {
+    // Code block to be executed for each element in the sequence
+}
+
+In this syntax:
+
+index: Represents the index of the current element in the sequence.
+
+element: Represents the current element in the sequence.
+
+sequence: The collection or sequence you want to iterate over.
+
+
+Example :
+
+let fruits = ["apple", "banana", "orange"]
+
+for (index, fruit) in fruits.enumerated() {
+    print("Index: \(index), Fruit: \(fruit)")
+}
+
+In this example, the enumerated() method is called on the fruits array to create a sequence of tuples containing the index and element pairs. The loop iterates over each tuple, allowing you to access both the index and the element of the array in each iteration. The print() statement inside the loop prints out the index and the corresponding fruit for each iteration.
+
+
+
+Q30)  What is control transfer statements in swift and their purpose?
+
+A) Control transfer statements in Swift are special keywords that allow you to change the flow of execution within your code. They provide mechanisms for altering the order in which your code is executed, jumping to different parts of your program, or exiting loops or functions prematurely. 
+
+
+1- break:
+
+Purpose: Terminates the execution of a loop or switch statement.
+
+Usage: Typically used when a certain condition is met and you want to exit the loop or switch statement immediately.
+
+2- continue:
+
+Purpose: Skips the rest of the current iteration of a loop and moves to the next iteration.
+
+Usage: Useful when you want to skip executing the remaining code in a loop for a particular iteration, but continue looping.
+
+
+3- fallthrough:
+
+Purpose: Used only within switch statements to continue execution to the next case block, even if the matching case has been found.
+
+Usage: Rarely used and often discouraged, as Swift's switch statements do not fall through by default.
+
+4- return:
+
+Purpose: Exits the current function or closure and returns a value, if specified.
+
+Usage: Used to prematurely exit a function or closure and return a value back to the caller.
+
+
+5- throw:
+
+Purpose: Used in error handling to throw an error to be handled by a surrounding do-catch block or propagated to a higher level.
+
+Usage: Allows you to signal that an error condition has occurred and propagate the error up the call stack for handling.
+
+
+Q31) - [ ] What is File’s Owner in interface in swift ?
+
+A) magine you're building a user interface for your app using a storyboard or XIB file. The "File's Owner" is like the manager of that interface. It's the controller or object that's responsible for managing the connections between the interface and your code.
+For example, if you have a view controller class that controls a particular scene in your app, you would set that view controller class as the "File's Owner" for the corresponding storyboard or XIB file. This allows you to connect user interface elements (like buttons or labels) to properties and methods in your view controller code, so they can interact with each other.
+
+
+Q32) What is First Responder in interface?
+
+A) The "First Responder" in a user interface is like the first point of contact for any action or event that happens within that interface. It's an object that can respond to user interactions, such as taps, gestures, or keyboard input.
+When a user interacts with the interface, such as tapping on a text field, the "First Responder" becomes the object that handles that interaction. If the "First Responder" can't handle the interaction itself, it passes it on to the next object in the responder chain.
+In practical terms, the "First Responder" is often used with text input fields, where it represents the currently active text input field. It allows you to handle keyboard input and other text-related events in your app's interface.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
